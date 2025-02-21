@@ -1,0 +1,12 @@
+NOTES:
+1. apni aasani ke liye deserialization(json) samne bheje ge tu serailize karke   encode(serialize) decode(deserialization)
+2. tu add dependency in our app go to pub.dev    https://pub.dev/packages/http   to add that dependency rely on its points
+3. andrioid apps must define their dependency in the androidmanifest.xml file
+4. builder pattern object is accessing its variableas and methods=====>>>> obj.name(this is builder pattern)
+5. parsing=> serailizing or deserailinzing netwrok requests
+6. annotations
+7. Isolate(a function in flutter that allows the request to run in the background) and keeps the ui smooth for the user and makes no delay and separetes the request from the ui and send it to the background
+8. for fetch jsonplaceholder    https://jsonplaceholder.typicode.com/posts
+
+9. await=>intezar karo      Future=> gonna response baad mein   when async then future is used
+10. when not to use await when want to go
