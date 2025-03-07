@@ -1,0 +1,28 @@
+--persistent storage
+through filing/key-value store/SQLite database
+persistent storage is that the data or the state remains after we close the app and reopen it
+
+--key-value store
+in android share_preferences plugin
+in ios keychain
+os manage store with security layers
+example for storing credentials locally
+https://pub.dev/packages/shared_preferences
+
+--filing
+write in a file on the users device 
+get the users permission and write and read from the system storage 
+path_provider plugin
+
+--sqflite plugin
+creates a rdms in client side (bad to store large data in it)
+
+--secure storage
+save the tokens securely
+two apps having each others data e.g insta and meta
+
+--unit testing
+flutter_test
+unit--standalone that does not depends on other
+
+https://pub.dev/packages/mockito

@@ -60,8 +60,6 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (context, index) {
                 var post = posts[index];
                 return ListTile(
-                  userId: int(post.userId),
-                  id: int(post.id),
                   title: Text(post.title),
                   subtitle: Text(post.body),
                 );

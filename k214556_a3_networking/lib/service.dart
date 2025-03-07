@@ -4,6 +4,9 @@ import 'model.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
 
+
+
+
 class NetworkService {
 
   Future <List<Post>> fetchPosts() async {
