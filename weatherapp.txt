@@ -1,0 +1,7 @@
+24.8607° N, 67.0011° E karachi coordinates
+
+build runner: The build_runner package provides a concrete way of generating files using Dart code. Files are always generated directly on disk, and rebuilds are incremental
+
+dev dependencies: require code run karne se pehle
+
+build time pr chalane ki madad ke liye dependencies goes in dev dependencies
