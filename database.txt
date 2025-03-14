@@ -26,3 +26,8 @@ flutter_test
 unit--standalone that does not depends on other
 
 https://pub.dev/packages/mockito
+
+
+-persist todo list through shared share_preferences
+-find 2 unit test cases
+-make dependency (persist) mockito in network call project

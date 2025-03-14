@@ -1,0 +1,39 @@
+Reactive Programming
+
+1. Architectural Patterns
+uses separeation of concern (ui ki layer alg kardena, logic alg concern tu uski alg layer network alg layer tu in sab ko aik page pr lane ke liye aik dosre mein change na kare that Architecture makes sure of)
+good architecture produces separetion of concerns zahir hai jab data model mein changeshongi tu ui mein bhi changes karni paregi so isi liye separation of concern
+makes the app easier to made and easier to scale
+
+2. State Management
+creating stateful widgets
+maintaining state for each widget manually as child state depend on parent so like we speareted the widget in the todo list so that only the list that is check is rebuild
+
+3. Flutter Provider(A wrapper around InheritedWidget to make them easier to use and more reusable.)
+architecture provided by flutter faida ache architecture ka tu state management aasan hojaegi
+pehle re render kardiya karte the but in improved version we are obseving our object and make relevent changes ==> OBSERVING(OBSERVING data changes and make relevent changes)
+Desgin patter publish subscribe it observes a variable and publish it to one or many the subscriber gets the relevent changes by the publish notified
+https://pub.dev/packages/provider/example
+
+Main Concepts
+-Notifier ==> ka kaam notify karna
+-Provider ==> tells the state changes to the Consumer
+-Consumer ==> ka kaam notify hone, ui wala part
+
+4. Reactive Programming
+-Streams ==> continous flow of data coming which you can subsribe and unsubscibe to (real time data coming in flow)
+-Async*  ==> you dont have to wait for it, when its aviable you start using it
+-yield   ==> stream ne state ko yield(return) kara (differecne b/w return and yeild reutrn aik bar hot ahai yeild baar baar hota rehta hai)
+
+5. State Management Technique
+-setState
+-Flutter Provider (Observer architecture)
+-Bloc (Reactive Programming - reactive architecture)
+
+6. Bloc (https://bloclibrary.dev/)
+Main Concepts
+-Event  ==> ham apne bloc ke events define kardenge ke kab hamari nai state aaegi so according to that we make events (event trigger hoga)
+-States ==> event trigger hone ke baad we will be in some state (loading, uninitialized, populated)
+-Bloc   ==> widget--which will be inherited in the class--bloc hamesha aik nai state ko yeild karega
+-BlocBuilder ==> Repository ke upper BlocBuilder apply kiya same like context builder(expecting something in future)
+-Repository ==> central storage-
