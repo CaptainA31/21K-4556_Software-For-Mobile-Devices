@@ -37,3 +37,23 @@ Main Concepts
 -Bloc   ==> widget--which will be inherited in the class--bloc hamesha aik nai state ko yeild karega
 -BlocBuilder ==> Repository ke upper BlocBuilder apply kiya same like context builder(expecting something in future)
 -Repository ==> central storage-
+
+
+
+
+7. https://docs.flutter.dev/data-and-backend/state-mgmt/simple
+hands on flutter provider
+
+
+NOTIFIER
+-first class in provider Notifier
+-calls the Notifier(setState) int the data model where setState was called in ui so its the differecne
+-koi bhi change aaega notifier sambhal lega
+
+PROVIDER
+-its a widget
+-ka kaam aage consumer ko bhejna
+
+CONSUMER
+-jab value increment hogi ab ye ja ke notifier ko call karega and then vo dobara provider ko batatega aur kahega ke rebuild all your consumers
+-so consumer class ko parent position pr nahi lagana warna sab kuch rebuild ho raha hoga so isi liye we use the class where its needed
