@@ -1,0 +1,15 @@
+security measures and CI/CD
+
+1. mobile app security measures
+    -SSL pinning(checking SSL certificate)  //https://pub.dev/packages/ssl_pinning_plugin  //can be imune to Man In The Middle     //needed for the client and server convo aik certificate server ke pass aik app ke pass then matching
+    -Encryption     //so second layer encrypting the data      //https://pub.dev/packages/flutter_secure_storage
+    -Obfuscation    // a concept where the code we have written cannot be reverse engineered so that code samjh hi na aae   //reverse engineering is done via artifact file(.apk) agr apk file vinzip ko denge tu its gonna unzip it    //agr apko pata ho ke kis framework ke through generate hoi hai .apk tu Obfuscation gets easy   //but in flutter no one is able to decrypt the artifact file yet
+
+
+2. build artifact generation    //artifact file which hepls in distributing the app which can be uploaded on the play store/app store
+3. Integrating CodeMagic (CICD tool)    https://codemagic.io/   //a cicd tool to automate the steps of building artifact to distributing
+
+
+
+aik jaga pr data important tha parhne nahi dena tha tu encrypt kardiyaaik jaga pr data importatnt nahi tha show kar sakte hain but change na ho ye important hai tu uske liye fingerprint (SHA) 
+
