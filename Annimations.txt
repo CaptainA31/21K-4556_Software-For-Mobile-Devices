@@ -1,0 +1,73 @@
+Two types of Annimations:
+1. Drawing-Based Annimations
+2. Code-Based Annimations
+
+
+2. Code-Based Annimations:
+    Widget focused root in standard layout and style primitives like row, col, colors, or text styles
+    They tend to enhance a particular existing Widget's appearence or transition rather than acting as standalone Widget 
+    Code base has two different flavours IMPLICIT & EXPLICIT
+
+1. Drawing-Based Annimations:
+    In contrast look like someone drew them often standalone like game characters or transformations that would be challenging to express
+
+NOTE: first question to ask before Annimations "Is my Annimations more like a Drawing or does it look more like something you can build out from a Widget"
+
+IF Annimations is more like a Drawing or working with a desgin team who will provide vector or raster image assets then use thrid party such as Rive or Lottie to build your Annimations graphically and then export it to flutter 
+
+
+IMPLICIT & EXPLICIT Annimations:
+-IMPLICIT Annimations rely on simply setting a new value for some Widget property       https://api.flutter.dev/flutter/widgets/ImplicitlyAnimatedWidget-class.html
+
+-EXPLICIT Annimations require an Annimation controller (only start annimating when EXPLICITly asked to)
+    you can use EXPLICIT annimations to do everything you can with IMPLICIT plus a little more 
+    annoying thing is you have to manage the lifecycle of that annimation controller since its not a Widget which means putting it inside the stateful widget
+
+NOTE: now the question you have to ask yourself "Does it repeat forever", "Is it discontinouts (like a cicle repeats it self on loading smal to large then again repeat)", "Do multiple widgets annimate together"
+    IF YES! to any of those three questions above then we are gonna be using EXPLICIT widget
+
+is there built-in widget for my needs?
+-if you are looking for an IMPLICIT annimation widget=> Built-in implicit annimation    or(annimated container)
+    if you cant find the built in implicit annimation you can use TweenAnnimationBuilder (to create custom implicit annimation builder)
+
+-if you are looking for built in EXPLICIT annimation widget=>  Built-in explicit annimation
+    if you cant find the built in explicit annimation you can ask your self "Do you want your annimation to be a standalone widget or part of another surrounding widget"
+        for standalone  AnnimatedWidget
+        else AnnimatedBuilder
+        on last thing if you see perfromnace problems use CustomPainter(builds directly to the canvas  without the standard widget build paradigm)
+
+
+
+
+
+
+-Ticker controller
+Ticker is a function that calls object every frame 
+    var ticker = Ticker((elapsed) => print("hello"));
+    ticker.start();
+in this method we are printing hello every frame 
+ticker.dispose(); is important to call else ticker will go on forever until we kill the app
+for that SingleTickerProviderStateMixin     takes care of the hassle of managing your ticker 
+
+
+
+
+LETS start
+Align -> AnimatedAlign 
+Container -> AnimatedContainer 
+DefaultTextStyle -> AnimatedDefaultTextStyle 
+Opacity -> AnimatedOpacity 
+Padding -> Animated Padding 
+PhysicalModel -> Animated PhysicalModel 
+Positioned -> AnimatedPositioned 
+Positioned Directional -> AnimatedPositioned Directional 
+Theme -> Animated ThemeSize -> AnimatedSize
+
+
+The process of animating through the values between the old and the new is called INTERPOLATION
+this interpolation is applied to all the annimated container's properties
+
+
+--TweenAnnimationBuilder
+-Now suppose you wanna create a basic animation but ther is no built in widget called animated foo where foo is the name of the property you want to animate, we can still create that animation with TweenAnnimationBuilder
+-Tweens are mutable, so if you know that you're going to animate between the same set of values its best to declare your tween as a static final variable in your class, that way you dont create a new object every time you rebuild
