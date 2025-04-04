@@ -1,0 +1,25 @@
+Platform Specific code
+-Platform Channels (library for native) to talk to flutter
+--flutter is a cross platform but there are sometimes when we need the native code to be executed to open native options so for that we will work on native platform like kotlin java for android and swift for ios and then for their communication with the flutter we use platform Channels
+--for example battery ki percentage lane ke liye 
+--dart is good with on screen animations plus desigining detailed ui so thats why we need platform Channels
+--non trivail tasks such as notifications, app life cycle, camera etc
+
+Ways of Implementation
+-Message Passing (library that will be installed in native project and in flutter project and through that they will communicate)
+
+native code likhege android ya ios ke folder mein
+https://docs.flutter.dev/platform-integration/platform-channels
+battery example
+
+
+ https://docs.flutter.dev/packages-and-plugins/developing-packages
+ we can publish dart packages as well as plugin packages
+
+ version changing of packages
+ MAJOR.MINOR.PATCH
+ 0.0.0
+
+ flutter create --template=package hello    for package
+ fedrated plugin ki command different 
+

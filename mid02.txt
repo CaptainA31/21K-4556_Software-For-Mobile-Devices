@@ -1,0 +1,17 @@
+network request (RESST API, (json parsing   => toJson and FromJson  => mannually ))
+    http calls get, post
+    uri syntax header body
+
+Persistent storage 
+    jab har baar server se communication nahi karni hoti
+
+Unit Testing
+    concept + little code
+
+Architectural Patterns(provider, scoped model, bloc)
+
+Annimations
+
+
+Tutorial
+Bloc offical website pr weather app ka tutuorial

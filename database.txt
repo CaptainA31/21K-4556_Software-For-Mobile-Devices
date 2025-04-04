@@ -6,7 +6,7 @@ persistent storage is that the data or the state remains after we close the app 
 in android share_preferences plugin
 in ios keychain
 os manage store with security layers
-example for storing credentials locally
+example for storing credentials locally(encrypted)
 https://pub.dev/packages/shared_preferences
 
 --filing
