@@ -30,3 +30,7 @@ plugin: fetrated plugin     swift/kotlin-android Specific language written
 
 Flavours:
 build modes=> debug, profile, release
+
+
+package bana ke us ke andr cmd mein flutter create example kar ke usi ke andr chala ke dekh liya ta ke dekh sake ke ui jo package ke andr bana rahe hain dekh sake ke kaisa hai
+you can also keep your repo private 
