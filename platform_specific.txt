@@ -23,3 +23,10 @@ battery example
  flutter create --template=package hello    for package
  fedrated plugin ki command different 
 
+packages vs plugins
+packages: dart only package
+plugin: fetrated plugin     swift/kotlin-android Specific language written 
+
+
+Flavours:
+build modes=> debug, profile, release
