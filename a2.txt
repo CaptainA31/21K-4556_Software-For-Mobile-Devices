@@ -1,0 +1,8 @@
+1: sign up and login
+2: Listing  --can have multiple page base on the project
+3: utility  --
+4: Mocks
+5: Architecture --Bloc
+
+5 ui features hone lazmi
+fire base se read wriet ke liye tests
