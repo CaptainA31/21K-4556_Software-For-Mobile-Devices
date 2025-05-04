@@ -13,7 +13,9 @@ dependencies {
 
   // TODO: Add the dependencies for Firebase products you want to use
   // When using the BoM, don't specify versions in Firebase dependencies
-  implementation("com.google.firebase:firebase-analytics")
+ implementation("com.google.firebase:firebase-analytics")
+ implementation("com.google.firebase:firebase-auth")
+ implementation("com.google.firebase:firebase-firestore")
 
 
   // Add the dependencies for any other desired Firebase products
@@ -36,7 +38,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.example.food_recipe_app"
+        applicationId = "1:472918919602:android:26f0d42fb964159a5d7cab"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
