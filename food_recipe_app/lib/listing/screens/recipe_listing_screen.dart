@@ -49,19 +49,20 @@ class _RecipeListingScreenState extends State<RecipeListingScreen> {
           r.category.toLowerCase().contains(searchQuery);
     }).toList();
   }
-  
+
   bool isAdmin(User? user) {
-    const adminUIDs = ['BTdIXsTbaMhbu9CPtKZbPiNhl7z2']; // Replace with real UID(s)
+    const adminUIDs = [
+      'BTdIXsTbaMhbu9CPtKZbPiNhl7z2',
+    ]; // Replace with real UID(s)
     return user != null && adminUIDs.contains(user.uid);
   }
-
 
   @override
   Widget build(BuildContext context) {
     final currentUser = FirebaseAuth.instance.currentUser;
     final currentUserId = currentUser?.uid ?? '';
     final user = FirebaseAuth.instance.currentUser;
-    
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Recipes'),
@@ -113,128 +114,172 @@ class _RecipeListingScreenState extends State<RecipeListingScreen> {
               grouped.putIfAbsent(recipe.category, () => []).add(recipe);
             }
 
-            
-return ListView(
-  padding: const EdgeInsets.all(12),
-  children: grouped.entries.map((entry) {
-    return Card(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      margin: const EdgeInsets.symmetric(vertical: 8),
-      elevation: 4,
-      child: Theme(
-        data: Theme.of(context).copyWith(
-          dividerColor: Colors.transparent,
-        ),
-        child: ExpansionTile(
-          collapsedIconColor: Colors.deepOrange,
-          iconColor: Colors.deepOrange,
-          title: Text(
-            entry.key,
-            style: GoogleFonts.poppins(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              color: Colors.deepOrange,
-            ),
-          ),
-          children: entry.value.map((recipe) {
-            final user = FirebaseAuth.instance.currentUser;
-            final bool canDelete = recipe.creatorId == user?.uid || isAdmin(user);
+            return ListView(
+              padding: const EdgeInsets.all(12),
+              children:
+                  grouped.entries.map((entry) {
+                    return Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      margin: const EdgeInsets.symmetric(vertical: 8),
+                      elevation: 4,
+                      child: Theme(
+                        data: Theme.of(
+                          context,
+                        ).copyWith(dividerColor: Colors.transparent),
+                        child: ExpansionTile(
+                          collapsedIconColor: Colors.deepOrange,
+                          iconColor: Colors.deepOrange,
+                          title: Text(
+                            entry.key,
+                            style: GoogleFonts.poppins(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.deepOrange,
+                            ),
+                          ),
+                          children:
+                              entry.value.map((recipe) {
+                                final user = FirebaseAuth.instance.currentUser;
+                                final bool canDelete =
+                                    recipe.creatorId == user?.uid ||
+                                    isAdmin(user);
 
-            return InkWell(
-  onTap: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) => RecipeDetailScreen(recipe: recipe),
-      ),
-    );
-  },
-  borderRadius: BorderRadius.circular(12),
-  child: Container(
-    margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-    padding: const EdgeInsets.all(12),
-    decoration: BoxDecoration(
-      color: const Color(0xFFFDFDFD),
-      borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: Colors.orange.shade100, width: 1),
-    ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(recipe.title,
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            )),
-        const SizedBox(height: 4),
-        Text(recipe.description,
-            style: GoogleFonts.poppins(
-              fontSize: 13,
-              color: Colors.grey[700],
-            )),
-        const SizedBox(height: 6),
-        Text('Ingredients: ${recipe.ingredients.join(', ')}',
-            style: GoogleFonts.poppins(
-              fontStyle: FontStyle.italic,
-              fontSize: 12,
-              color: Colors.grey[600],
-            )),
-        const SizedBox(height: 10),
-        Row(
-          children: [
-            IconButton(
-              icon: const Icon(Icons.edit, color: Colors.blueAccent),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) =>
-                        AddOrEditRecipeScreen(existingRecipe: recipe),
-                  ),
-                );
-              },
-            ),
-            if (canDelete)
-              IconButton(
-                icon: const Icon(Icons.delete, color: Colors.redAccent),
-                onPressed: () => _deleteRecipe(recipe.id),
-              ),
-            IconButton(
-              icon: Icon(
-                recipe.likedBy.contains(currentUserId)
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                color: Colors.redAccent,
-              ),
-              onPressed: () {
-                if (recipe.id.trim().isNotEmpty) {
-                  context.read<RecipeBloc>().add(
-                        ToggleLikeRecipeEvent(
-                          recipeId: recipe.id,
-                          userId: currentUserId,
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder:
+                                            (_) => RecipeDetailScreen(
+                                              recipe: recipe,
+                                            ),
+                                      ),
+                                    );
+                                  },
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Container(
+                                    margin: const EdgeInsets.symmetric(
+                                      horizontal: 12,
+                                      vertical: 6,
+                                    ),
+                                    padding: const EdgeInsets.all(12),
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFFDFDFD),
+                                      borderRadius: BorderRadius.circular(12),
+                                      border: Border.all(
+                                        color: Colors.orange.shade100,
+                                        width: 1,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          recipe.title,
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black87,
+                                          ),
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          recipe.description,
+                                          style: GoogleFonts.poppins(
+                                            fontSize: 13,
+                                            color: Colors.grey[700],
+                                          ),
+                                        ),
+                                        const SizedBox(height: 6),
+                                        Text(
+                                          'Ingredients: ${recipe.ingredients.join(', ')}',
+                                          style: GoogleFonts.poppins(
+                                            fontStyle: FontStyle.italic,
+                                            fontSize: 12,
+                                            color: Colors.grey[600],
+                                          ),
+                                        ),
+                                        const SizedBox(height: 10),
+                                        Row(
+                                          children: [
+                                            if (recipe.creatorId == user?.uid ||
+                                                isAdmin(user))
+                                              IconButton(
+                                                icon: const Icon(
+                                                  Icons.edit,
+                                                  color: Colors.blueAccent,
+                                                ),
+                                                onPressed: () {
+                                                  Navigator.push(
+                                                    context,
+                                                    MaterialPageRoute(
+                                                      builder:
+                                                          (_) =>
+                                                              AddOrEditRecipeScreen(
+                                                                existingRecipe:
+                                                                    recipe,
+                                                              ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+
+                                            if (canDelete)
+                                              IconButton(
+                                                icon: const Icon(
+                                                  Icons.delete,
+                                                  color: Colors.redAccent,
+                                                ),
+                                                onPressed:
+                                                    () => _deleteRecipe(
+                                                      recipe.id,
+                                                    ),
+                                              ),
+                                            IconButton(
+                                              icon: Icon(
+                                                recipe.likedBy.contains(
+                                                      currentUserId,
+                                                    )
+                                                    ? Icons.favorite
+                                                    : Icons.favorite_border,
+                                                color: Colors.redAccent,
+                                              ),
+                                              onPressed: () {
+                                                if (recipe.id
+                                                    .trim()
+                                                    .isNotEmpty) {
+                                                  context
+                                                      .read<RecipeBloc>()
+                                                      .add(
+                                                        ToggleLikeRecipeEvent(
+                                                          recipeId: recipe.id,
+                                                          userId: currentUserId,
+                                                        ),
+                                                      );
+                                                }
+                                              },
+                                            ),
+                                            Text(
+                                              '${recipe.likedBy.length}',
+                                              style: GoogleFonts.poppins(
+                                                fontSize: 13,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
                         ),
-                      );
-                }
-              },
-            ),
-            Text(
-              '${recipe.likedBy.length}',
-              style: GoogleFonts.poppins(fontSize: 13),
-            ),
-          ],
-        ),
-      ],
-    ),
-  ),
-);
-
-          }).toList(),
-        ),
-      ),
-    );
-  }).toList(),
-);
+                      ),
+                    );
+                  }).toList(),
+            );
           } else if (state is RecipeError) {
             return Center(child: Text('Error: ${state.error}'));
           }
